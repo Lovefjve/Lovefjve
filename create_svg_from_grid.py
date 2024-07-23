@@ -18,11 +18,11 @@ def create_svg_from_grid(grid, output_file, cell_size=10, dark_mode=False):
 with open('random_grid.json') as f:
     grid = json.load(f)
 
-# Create output directory if it does not exist
+# Tạo thư mục output nếu chưa tồn tại
 os.makedirs('dist', exist_ok=True)
 
-# Create SVG for light mode
-create_svg_from_grid(grid, 'dist/random_grid.svg')
+# Tạo SVG cho chế độ sáng
+create_svg_from_grid(grid, 'dist/github-contribution-grid-snake.svg')
 
-# Create SVG for dark mode
-create_svg_from_grid(grid, 'dist/random_grid_dark.svg', dark_mode=True)
+# Tạo SVG cho chế độ tối
+create_svg_from_grid(grid, 'dist/github-contribution-grid-snake-dark.svg', dark_mode=True)
