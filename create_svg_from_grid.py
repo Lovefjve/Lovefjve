@@ -1,4 +1,5 @@
 import json
+import os
 from svgwrite import Drawing
 
 def create_svg_from_grid(grid, output_file, cell_size=10, dark_mode=False):
@@ -17,10 +18,9 @@ def create_svg_from_grid(grid, output_file, cell_size=10, dark_mode=False):
 with open('random_grid.json') as f:
     grid = json.load(f)
 
-# Create output directory if not exists
-import os
+# Tạo thư mục đầu ra nếu chưa có
 os.makedirs('dist', exist_ok=True)
 
-# Create SVG files
+# Tạo các file SVG
 create_svg_from_grid(grid, 'dist/github-contribution-grid-snake.svg')
 create_svg_from_grid(grid, 'dist/github-contribution-grid-snake-dark.svg', dark_mode=True)
