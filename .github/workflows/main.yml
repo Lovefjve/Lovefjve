@@ -32,7 +32,7 @@ jobs:
       - name: Generate random grid data
         run: python generate_random_grid.py
 
-      - name: Create SVG from random grid data
+      - name: Generate SVG from random grid data
         run: python create_svg_from_grid.py
 
       - name: Generate github-contribution-grid-snake.svg
