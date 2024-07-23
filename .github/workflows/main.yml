@@ -1,20 +1,16 @@
-name: generate random grid animation
+name: Generate Random Grid Animation
 
 on:
   schedule:
-    - cron: "0 2 * * *"
-  workflow_dispatch:
+    - cron: "0 2 * * *" # Runs at 2 AM every day
+  workflow_dispatch: # Allows manual trigger
   push:
     branches:
       - master
 
 jobs:
   generate:
-    permissions: 
-      contents: write
     runs-on: ubuntu-latest
-    timeout-minutes: 5
-    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -32,7 +28,7 @@ jobs:
       - name: Generate random grid data
         run: python generate_random_grid.py
 
-      - name: Generate SVG from random grid data
+      - name: Create SVG from grid data
         run: python create_svg_from_grid.py
 
       - name: Generate github-contribution-grid-snake.svg
