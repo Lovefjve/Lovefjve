@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-    - main
+      - main
 
 jobs:
   generate:
@@ -18,11 +18,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      
+
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.x
+          python-version: '3.x'
 
       - name: Install dependencies
         run: |
@@ -30,14 +30,12 @@ jobs:
           pip install svgwrite
 
       - name: Generate random grid
-        run: |
-          python generate_random_grid.py
+        run: python generate_random_grid.py
 
       - name: Generate SVG from random grid
         run: |
+          mkdir -p dist
           python create_svg_from_grid.py
-          mv dist/random_grid.svg dist/github-contribution-grid-snake.svg
-          mv dist/random_grid_dark.svg dist/github-contribution-grid-snake-dark.svg
 
       - name: Push github-contribution-grid-snake.svg to the output branch
         uses: crazy-max/ghaction-github-pages@v3.1.0

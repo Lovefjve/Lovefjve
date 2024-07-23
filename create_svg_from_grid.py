@@ -1,4 +1,5 @@
 import json
+import os
 from svgwrite import Drawing
 
 def create_svg_from_grid(grid, output_file, cell_size=10, dark_mode=False):
@@ -16,6 +17,9 @@ def create_svg_from_grid(grid, output_file, cell_size=10, dark_mode=False):
 
 with open('random_grid.json') as f:
     grid = json.load(f)
+
+# Create output directory if it does not exist
+os.makedirs('dist', exist_ok=True)
 
 # Create SVG for light mode
 create_svg_from_grid(grid, 'dist/random_grid.svg')
